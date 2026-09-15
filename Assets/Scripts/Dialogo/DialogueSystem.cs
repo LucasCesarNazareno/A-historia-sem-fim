@@ -16,12 +16,14 @@ public class DialogueSystem : MonoBehaviour
 
     TypeTextAnimation typeText;
     DialogueUI dialogueUI;
+    MovimentaçãoPerso player;
 
     STATE state;
     void Awake()
     {
         typeText = FindObjectOfType<TypeTextAnimation>();
         dialogueUI = FindObjectOfType<DialogueUI>();
+        player = FindObjectOfType<MovimentaçãoPerso>();
 
         typeText.TypeFinished = OnTypeFinishe;
     }
@@ -47,6 +49,7 @@ public class DialogueSystem : MonoBehaviour
         if(currentText == 0)
         {
             dialogueUI.Enable();
+            player.podeMover = false;
         }
 
         dialogueUI.SetName(dialogueData.talkScript[currentText].name);
@@ -76,6 +79,7 @@ public class DialogueSystem : MonoBehaviour
             else
             {
                 dialogueUI.Disable();
+                FindFirstObjectByType<Lobo>().IniciarCutscene();
                 state = STATE.DISABLED;
                 currentText = 0;
                 finished = false;

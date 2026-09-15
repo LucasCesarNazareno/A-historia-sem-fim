@@ -1,36 +1,34 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Lobo : MonoBehaviour
 {
-    private bool jogadorPerto = false;
-    private DialogueSystem dialogueSystem;
+    public Animator animator;
+    public Image fade;
 
-    private void Start()
+    public void IniciarCutscene()
     {
-        dialogueSystem = FindFirstObjectByType<DialogueSystem>();
+        animator.enabled = true;
+        animator.Play("LoboAtaque");
+
+        StartCoroutine(TrocarCena());
     }
 
-    private void Update()
+    IEnumerator TrocarCena()
     {
-        if (jogadorPerto && Input.GetKeyDown(KeyCode.E))
-        {
-            dialogueSystem.Next();
-        }
-    }
+        yield return new WaitForSeconds(0.1f);
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            jogadorPerto = true;
-        }
-    }
+        Color cor = fade.color;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        while (cor.a < 1f)
         {
-            jogadorPerto = false;
+            cor.a += Time.deltaTime * 10f;
+            fade.color = cor;
+            yield return null;
         }
+
+        SceneManager.LoadScene("Fase2");
     }
 }

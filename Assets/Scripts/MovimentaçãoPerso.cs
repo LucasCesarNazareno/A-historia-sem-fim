@@ -11,8 +11,11 @@ public class MovimentaçãoPerso : MonoBehaviour
     public Transform lobo;
     public float distanciaInteracao = 3f;
 
+    public bool podeMover = true;
+
     private Rigidbody rb;
     private float rotacaoX = 0f;
+    private bool estaNoChao = true;
 
     DialogueSystem dialogueSystem;
 
@@ -24,12 +27,25 @@ public class MovimentaçãoPerso : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
+        // Permite apertar E mesmo com movimento bloqueado
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            float distancia = Vector3.Distance(transform.position, lobo.position);
+
+            if (distancia <= distanciaInteracao)
+            {
+                dialogueSystem.Next();
+            }
+        }
+
+        if (!podeMover)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensibilidadeMouse;
         float mouseY = Input.GetAxis("Mouse Y") * sensibilidadeMouse;
 
@@ -37,6 +53,7 @@ public class MovimentaçãoPerso : MonoBehaviour
 
         rotacaoX -= mouseY;
         rotacaoX = Mathf.Clamp(rotacaoX, -90f, 90f);
+
         if (cameraTransform != null)
         {
             cameraTransform.localRotation = Quaternion.Euler(rotacaoX, 0f, 0f);
@@ -47,21 +64,25 @@ public class MovimentaçãoPerso : MonoBehaviour
 
         Vector3 direcao = transform.right * x + transform.forward * z;
         Vector3 velocidadeFinal = direcao * velocidade;
-        rb.linearVelocity = new Vector3(velocidadeFinal.x, rb.linearVelocity.y, velocidadeFinal.z);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        rb.linearVelocity = new Vector3(
+            velocidadeFinal.x,
+            rb.linearVelocity.y,
+            velocidadeFinal.z
+        );
+
+        if (Input.GetKeyDown(KeyCode.Space) && estaNoChao)
         {
             rb.AddForce(Vector3.up * forçaPulo, ForceMode.Impulse);
+            estaNoChao = false;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.E))
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Chao"))
         {
-            float distancia = Vector3.Distance(transform.position, lobo.position);
-
-            if (distancia <= distanciaInteracao)
-            {
-                dialogueSystem.Next();
-            }
+            estaNoChao = true;
         }
     }
 }
