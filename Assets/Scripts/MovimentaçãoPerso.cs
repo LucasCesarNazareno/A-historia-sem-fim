@@ -14,6 +14,7 @@ public class MovimentaçãoPerso : MonoBehaviour
     public bool podeMover = true;
 
     private Rigidbody rb;
+    private Animator animator;
     private float rotacaoX = 0f;
     private bool estaNoChao = true;
 
@@ -27,6 +28,7 @@ public class MovimentaçãoPerso : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -44,7 +46,10 @@ public class MovimentaçãoPerso : MonoBehaviour
         }
 
         if (!podeMover)
+        {
+            animator.SetBool("Andando", false);
             return;
+        }
 
         float mouseX = Input.GetAxis("Mouse X") * sensibilidadeMouse;
         float mouseY = Input.GetAxis("Mouse Y") * sensibilidadeMouse;
@@ -61,6 +66,10 @@ public class MovimentaçãoPerso : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        // Ativa a animação quando estiver andando
+        bool andando = x != 0 || z != 0;
+        animator.SetBool("Andando", andando);
 
         Vector3 direcao = transform.right * x + transform.forward * z;
         Vector3 velocidadeFinal = direcao * velocidade;
