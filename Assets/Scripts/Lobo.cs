@@ -29,6 +29,6 @@ public class Lobo : MonoBehaviour
             yield return null;
         }
 
-        SceneManager.LoadScene("Fase3");
+        SceneManager.LoadScene("Fase2");
     }
 }

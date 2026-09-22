@@ -1,12 +1,27 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
 
 public class MovimentacaoDragao : MonoBehaviour
 {
-    public float velocidade = 5f;
+    public float velocidade = 50f;
     public float sensibilidadeMouse = 2f;
+    public float distanciaTrocaCena = 50f;
+
+    public Image fade;
+
+    private bool trocandoCena = false;
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
+        rb.useGravity = false;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -31,6 +46,42 @@ public class MovimentacaoDragao : MonoBehaviour
             direcao += Vector3.down;
         }
 
-        transform.position += direcao.normalized * velocidade * Time.deltaTime;
+        Vector3 velocidadeFinal = direcao.normalized * velocidade;
+
+        rb.linearVelocity = new Vector3(
+            velocidadeFinal.x,
+            velocidadeFinal.y,
+            velocidadeFinal.z
+        );
+
+        if (trocandoCena)
+            return;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, distanciaTrocaCena))
+        {
+            Debug.Log("Acertou: " + hit.collider.gameObject.name);
+
+            if (hit.collider.gameObject.name == "ParedeInvisivel")
+            {
+                trocandoCena = true;
+                StartCoroutine(TrocarCenaComFade());
+            }
+        }
+    }
+
+    IEnumerator TrocarCenaComFade()
+    {
+        Color cor = fade.color;
+
+        while (cor.a < 1f)
+        {
+            cor.a += Time.deltaTime * 2f;
+            fade.color = cor;
+            yield return null;
+        }
+
+        SceneManager.LoadScene("Fase3");
     }
 }
