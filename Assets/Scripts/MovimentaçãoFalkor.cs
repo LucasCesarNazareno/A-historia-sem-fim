@@ -11,6 +11,9 @@ public class MovimentacaoDragao : MonoBehaviour
 
     public Image fade;
 
+    public AudioSource musica;
+    public float tempoFadeMusica = 3f;
+
     private bool trocandoCena = false;
     private Rigidbody rb;
 
@@ -27,6 +30,9 @@ public class MovimentacaoDragao : MonoBehaviour
 
     void Update()
     {
+        if (trocandoCena)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * sensibilidadeMouse;
 
         transform.Rotate(0f, -mouseX, 0f);
@@ -54,9 +60,6 @@ public class MovimentacaoDragao : MonoBehaviour
             velocidadeFinal.z
         );
 
-        if (trocandoCena)
-            return;
-
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, distanciaTrocaCena))
@@ -73,15 +76,48 @@ public class MovimentacaoDragao : MonoBehaviour
 
     IEnumerator TrocarCenaComFade()
     {
+        StartCoroutine(FadeTela());
+
+        StartCoroutine(FadeMusica());
+
+        yield return new WaitForSeconds(tempoFadeMusica);
+
+        musica.Stop();
+
+        SceneManager.LoadScene("Fase3");
+    }
+
+    IEnumerator FadeTela()
+    {
         Color cor = fade.color;
 
         while (cor.a < 1f)
         {
-            cor.a += Time.deltaTime * 2f;
+            cor.a += Time.deltaTime * 10f;
             fade.color = cor;
+
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeMusica()
+    {
+        float volumeInicial = musica.volume;
+        float tempo = 0f;
+
+        while (tempo < tempoFadeMusica)
+        {
+            tempo += Time.deltaTime;
+
+            musica.volume = Mathf.Lerp(
+                volumeInicial,
+                0f,
+                tempo / tempoFadeMusica
+            );
+
             yield return null;
         }
 
-        SceneManager.LoadScene("Fase3");
+        musica.volume = 0f;
     }
 }

@@ -118,3 +118,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Meteoro
   velocidade: 600
+  oscilacao: 150
+  frequencia: 3

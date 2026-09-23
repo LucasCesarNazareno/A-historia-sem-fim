@@ -13,15 +13,101 @@ MonoBehaviour:
   m_Name: DialogueData
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   talkScript:
-  - name: Gmork
-    text: Que fome...
+  - name: ????
+    text: "Ent\xE3o voc\xEA finalmente chegou."
   - name: Atreyu
-    text: MEU DEUS, UM LOBO
+    text: "Quem \xE9 voc\xEA?"
   - name: Gmork
-    text: "Ps\xE9 n\xE9"
+    text: "Meu nome \xE9 Gmork. E voc\xEA est\xE1 prestes a se tornar minha \xFAltima
+      v\xEDtima."
   - name: Atreyu
-    text: Mas eae?
+    text: "N\xE3o pense que vou morrer sem lutar. Sou Atreyu, guerreiro das Plan\xEDcies
+      de Grama."
   - name: Gmork
-    text: "Ah, vou ter q te comer n\xE9"
+    text: Um guerreiro... E ainda acredita que pode salvar Fantasia?
   - name: Atreyu
-    text: Tenso
+    text: "Eu fui escolhido pela Imperatriz Crian\xE7a. Atravessei Fantasia em busca
+      de uma forma de salv\xE1-la. Vi lugares sendo destru\xEDdos e criaturas desaparecendo
+      diante dos meus olhos."
+  - name: Gmork
+    text: "E mesmo assim voc\xEA ainda n\xE3o entendeu o que est\xE1 acontecendo?"
+  - name: Atreyu
+    text: "O Nada est\xE1 destruindo Fantasia. Mas eu ainda n\xE3o descobri o que
+      ele realmente \xE9."
+  - name: Gmork
+    text: "Ent\xE3o escute, guerreiro. Talvez esta seja sua \xFAltima chance de conhecer
+      a verdade.  "
+  - name: Atreyu
+    text: Fale.
+  - name: Gmork
+    text: "Fantasia n\xE3o \xE9 apenas um reino. N\xE3o existem limites para ela.
+      Cada criatura, cada lugar e cada aventura que existe aqui nasceu da imagina\xE7\xE3o
+      dos seres humanos."
+  - name: Atreyu
+    text: "Ent\xE3o \xE9 por isso que tudo parece t\xE3o diferente..."
+  - name: Gmork
+    text: "Tudo aquilo que os humanos sonham pode existir aqui. Suas hist\xF3rias,
+      seus desejos, seus medos e suas esperan\xE7as."
+  - name: Atreyu
+    text: "Mas por que Fantasia est\xE1 desaparecendo?"
+  - name: Gmork
+    text: "Porque os humanos est\xE3o deixando de sonhar."
+  - name: Atreyu
+    text: "N\xE3o pode ser apenas isso."
+  - name: Gmork
+    text: "\xC9 exatamente isso. Quanto mais eles esquecem seus sonhos, mais forte
+      o Nada se torna."
+  - name: Atreyu
+    text: "E o Nada... o que ele \xE9?"
+  - name: Gmork
+    text: "\xC9 o vazio que aparece quando a imagina\xE7\xE3o desaparece. Ele consome
+      tudo o que encontra e deixa Fantasia cada vez menor."
+  - name: Atreyu
+    text: "Ent\xE3o ainda podemos impedir isso."
+  - name: Gmork
+    text: "Voc\xEA ainda pensa que pode salvar este mundo?"
+  - name: Atreyu
+    text: "Enquanto houver esperan\xE7a, sim."
+  - name: Gmork
+    text: "Esperan\xE7a..."
+  - name: Gmork
+    text: "\xC9 justamente isso que torna os humanos t\xE3o f\xE1ceis de controlar. "
+  - name: Atreyu
+    text: "O que voc\xEA quer dizer? "
+  - name: Gmork
+    text: "Quando algu\xE9m perde seus sonhos, perde tamb\xE9m a capacidade de acreditar
+      em algo diferente. E algu\xE9m que controla aquilo em que as pessoas acreditam
+      pode controlar muito mais do que imagina. "
+  - name: Atreyu
+    text: "Voc\xEA fala como se fizesse parte disso."
+  - name: Gmork
+    text: "Eu fa\xE7o."
+  - name: Atreyu
+    text: "Ent\xE3o quem est\xE1 por tr\xE1s do Nada?"
+  - name: Gmork
+    text: "H\xE1 for\xE7as que voc\xEA jamais conseguiria enfrentar. Eu fui enviado
+      para encontrar aquele que poderia impedir a destrui\xE7\xE3o de Fantasia."
+  - name: Atreyu
+    text: E quem seria essa pessoa?
+  - name: Gmork
+    text: "Voc\xEA."
+  - name: Atreyu
+    text: Eu?
+  - name: Gmork
+    text: "Sim. Eu persegui voc\xEA durante toda a sua jornada. Nas Plan\xEDcies
+      de Grama, nos p\xE2ntanos e at\xE9 onde sua busca pela Imperatriz o levou."
+  - name: Atreyu
+    text: "Ent\xE3o foi voc\xEA..."
+  - name: Gmork
+    text: "Eu deveria ter acabado com sua jornada h\xE1 muito tempo. Mas agora estamos
+      aqui. Fantasia est\xE1 desaparecendo e voc\xEA est\xE1 sem sa\xEDda."
+  - name: Atreyu
+    text: "Talvez eu esteja sem sa\xEDda..."
+  - name: Atreyu
+    text: ...mas ainda posso lutar.
+  - name: Gmork
+    text: "Ent\xE3o venha, Atreyu."
+  - name: Atreyu
+    text: Se vamos morrer, prefiro morrer lutando.
+  - name: Gmork
+    text: Rawww!

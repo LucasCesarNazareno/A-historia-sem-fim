@@ -5,7 +5,6 @@ public class MovimentaçãoPerso : MonoBehaviour
     public float velocidade = 5f;
     public float forçaPulo = 5f;
     public float sensibilidadeMouse = 2f;
-    public Transform cameraTransform;
 
     [Header("Interação")]
     public Transform lobo;
@@ -15,7 +14,6 @@ public class MovimentaçãoPerso : MonoBehaviour
 
     private Rigidbody rb;
     private Animator animator;
-    private float rotacaoX = 0f;
     private bool estaNoChao = true;
 
     DialogueSystem dialogueSystem;
@@ -34,7 +32,6 @@ public class MovimentaçãoPerso : MonoBehaviour
 
     void Update()
     {
-        // Permite apertar E mesmo com movimento bloqueado
         if (Input.GetKeyDown(KeyCode.E))
         {
             float distancia = Vector3.Distance(transform.position, lobo.position);
@@ -52,22 +49,12 @@ public class MovimentaçãoPerso : MonoBehaviour
         }
 
         float mouseX = Input.GetAxis("Mouse X") * sensibilidadeMouse;
-        float mouseY = Input.GetAxis("Mouse Y") * sensibilidadeMouse;
 
         transform.Rotate(Vector3.up * mouseX);
-
-        rotacaoX -= mouseY;
-        rotacaoX = Mathf.Clamp(rotacaoX, -90f, 90f);
-
-        if (cameraTransform != null)
-        {
-            cameraTransform.localRotation = Quaternion.Euler(rotacaoX, 0f, 0f);
-        }
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        // Ativa a animação quando estiver andando
         bool andando = x != 0 || z != 0;
         animator.SetBool("Andando", andando);
 

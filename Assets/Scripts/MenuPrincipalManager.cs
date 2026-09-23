@@ -4,12 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuPrincipalManeger : MonoBehaviour
 {
-    [SerializeField] private string nomeDoLevelDeJogo;
     [SerializeField] private GameObject painelMenuInicial;
 
     public void Jogar()
     {
-        SceneManager.LoadScene(nomeDoLevelDeJogo);
+        SceneManager.LoadScene("Fase1");
     }
 
     public void Sair()

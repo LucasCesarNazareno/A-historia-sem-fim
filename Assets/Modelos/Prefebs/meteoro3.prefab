@@ -96,7 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da5f89f682249548bd452d4934af77f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Meteoro
-  velocidade: 40
+  velocidade: 600
+  oscilacao: 350
+  frequencia: 3
 --- !u!65 &5569401265054799668
 BoxCollider:
   m_ObjectHideFlags: 0
