@@ -18,3 +18,4 @@ O projeto consiste na criação de um jogo inspirado no filme A História Sem Fi
 - História e contextualização: https://github.com/LucasCesarNazareno/A-historia-sem-fim/wiki/Hist%C3%B3ria-e-contextualiza%C3%A7%C3%A3o
 - Mecânicas do Jogos: https://github.com/LucasCesarNazareno/A-historia-sem-fim/wiki/Mec%C3%A2nicas-do-Jogos
 - Vídeo do jogo https://github.com/LucasCesarNazareno/A-historia-sem-fim/wiki/V%C3%ADdeo-do-jogo
+- Refenrencias: https://github.com/LucasCesarNazareno/A-historia-sem-fim/wiki/V%C3%ADdeo-referencias
